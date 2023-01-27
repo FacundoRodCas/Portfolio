@@ -16,11 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Proyecto.views import home
-from Creditos import views
+from debts_manager import views
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
-    path('creditos/', include('Creditos.urls'))
+    path('creditos/', include('debts_manager.urls'))
 ]

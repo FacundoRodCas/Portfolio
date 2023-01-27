@@ -1,6 +1,6 @@
 from django.apps import AppConfig
 
 
-class CreditosConfig(AppConfig):
+class DebtsManagerConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'Creditos'
+    name = 'debts_manager'
