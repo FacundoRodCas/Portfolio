@@ -7,5 +7,3 @@ class Deudores(models.Model):
     intereses_mensuales = models.IntegerField()
     created_at = models.DateField(auto_now_add=True)
 
-    def __str__(self, nombre, apellido, deuda_inicial, intereses_mensuales) -> str:
-        return f'Deudor: {nombre} {apellido} | Deuda inicial: {deuda_inicial} | Intereses mensuales: {intereses_mensuales}'

@@ -1,0 +1,18 @@
+<html>
+
+<body>
+<form acction = /mostrar_deudores/ method="GET"></form>
+
+{% if deudores %}
+    {% for deudor in deudores %}
+    <li>
+        {{deudor.nombre}}
+    </li>
+    {% endfor %}
+{% else %}
+    <p> No hay deudores </p>
+{% endif %}
+
+</body>
+
+</html>
