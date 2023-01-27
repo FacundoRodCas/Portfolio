@@ -5,8 +5,9 @@
 
 {% if deudores %}
     {% for deudor in deudores %}
+        
     <li>
-        {{deudor.nombre}}
+        {{deudor.nombre}} {{deudor.apellido}} | Deuda inicial: {{deudor.deuda_inicial}}
     </li>
     {% endfor %}
 {% else %}
