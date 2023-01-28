@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from .models import Deudores
-from django.contrib.auth.models import User
 import json
 import urllib.request
 from datetime import date
@@ -16,6 +15,6 @@ def mostrar_deudores(request):
         today = date.today()
         list = []
         for deudor in deudores:
-            list.append((deudor.deuda_inicial_en_dolares * dolar_blue) + (((today.year -deudor.created_at.year) * 12) + (today.month - deudor.created_at.month)) * deudor.intereses_mensuales)
+            list.append((deudor.deuda_inicial_en_dolares * dolar_blue) + (((((today.year -deudor.created_at.year) * 12) + (today.month - deudor.created_at.month)) * ((deudor.deuda_inicial_en_dolares / 100) * deudor.intereses_mensuales))) * dolar_blue)
         return render(request, 'creditos.html', {'deudores': deudores, 'list': list, 'dolar': dolar_blue})
 
