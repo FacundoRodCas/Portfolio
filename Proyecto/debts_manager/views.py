@@ -15,6 +15,10 @@ def mostrar_deudores(request):
         today = date.today()
         list = []
         for deudor in deudores:
-            list.append((deudor.deuda_inicial_en_dolares * dolar_blue) + (((((today.year -deudor.created_at.year) * 12) + (today.month - deudor.created_at.month)) * ((deudor.deuda_inicial_en_dolares / 100) * deudor.intereses_mensuales))) * dolar_blue)
+            deuda_inicial_dolares = deudor.deuda_inicial / dolar_blue
+            meses_pasados = ((today.year - deudor.created_at.year) * 12) + (today.month - deudor.created_at.month)
+            intereses_totales = ((deuda_inicial_dolares / 100) * deudor.intereses_mensuales)
+            valor = (deuda_inicial_dolares + (meses_pasados * intereses_totales)) * dolar_blue
+            list.append(valor)
         return render(request, 'creditos.html', {'deudores': deudores, 'list': list, 'dolar': dolar_blue})
 
