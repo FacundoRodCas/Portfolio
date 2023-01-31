@@ -16,10 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from Proyecto.views import home
+from django.shortcuts import redirect
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home),
-    path('creditos/', include('debts_manager.urls')),
+    path('creditos/', include('debtsmanager.urls')),
     path('registro/', include('Registro.urls')),
 ]

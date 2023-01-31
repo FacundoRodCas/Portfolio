@@ -1,0 +1,22 @@
+<html>
+<body>
+    <p>Dolar blue hoy: {{dolar}}</p>
+    Tus créditos:
+    <form action="/mostrar_deudores/" method="GET">
+        
+{% if deudores %}
+    {% for deudor in deudores %}
+            {% load index %}
+            <p>Deudor: {{deudor.nombre}} {{deudor.apellido}} | Deuda inicial en pesos: {{deudor.deuda_inicial}} | Fecha de creación: {{deudor.created_at}} | Intereses mensuales: {{deudor.intereses_mensuales}}% | Deuda actual en pesos = {{list | index:forloop.counter0}}</p>
+            
+    {% endfor %}
+{% endif %}
+        
+    </form>
+
+</body>
+
+
+
+
+</html>

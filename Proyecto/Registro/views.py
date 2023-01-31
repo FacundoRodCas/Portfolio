@@ -3,6 +3,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.forms import UserCreationForm
 from django.views.generic import View
 from django.contrib import messages
+from debtsmanager.views import dolar_blue
+
 
 class Registro(View):
     def get(self, request):
@@ -14,7 +16,9 @@ class Registro(View):
         if form.is_valid():
             usuario = form.save()
             login(request, usuario)
-            return redirect('home')
+
+            return render('home.html', {{'dolar': dolar_blue}})
+
         else:
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])
