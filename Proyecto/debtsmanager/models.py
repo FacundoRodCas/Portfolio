@@ -10,3 +10,5 @@ class Deudores(models.Model):
     intereses_mensuales = models.IntegerField()
     acreedor = models.ForeignKey(User, on_delete=models.CASCADE)
     created_at = models.DateField()
+
+    
