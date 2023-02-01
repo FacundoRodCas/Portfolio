@@ -1,3 +1,9 @@
 <html>
+    {% if user.is_authenticated %}
+    Hola, {{user.username}}
+    {% else %}
+    No autenticado
+    <a href="login.html">Login</a>&nbsp;<a href="registo.html">Registrate</a>
+    {% endif %}
     <body>Bienvenido: el dolar blue es: {{dolar}}</body>
 </html>

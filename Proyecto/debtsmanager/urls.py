@@ -7,5 +7,5 @@ app_name = 'debtsmanager'
 urlpatterns = [
     path('', mostrar_deudores),
     path('formulario/', crear_deudor),
-
+    path('gracias/', crear_deudor, name = 'gracias'),
 ]

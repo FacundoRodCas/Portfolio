@@ -1,11 +1,12 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from .models import Deudores
-import json
-import urllib.request
-from datetime import date
 from .forms import DeudoresForm
 from datetime import date
 from django.contrib.auth.models import User
+import json
+import urllib.request
+from datetime import date
+
 
 response = urllib.request.urlopen('https://api.bluelytics.com.ar/v2/latest')
 response_body = response.read()
@@ -27,20 +28,15 @@ def mostrar_deudores(request):
 
 def crear_deudor(request):
     if request.method == 'POST':
-        form=DeudoresForm(request.POST)
+        form = DeudoresForm(request.POST)
         if form.is_valid():
-            deudor = Deudores.objects.create(nombre = form['nombre'],
-                            apellido = form['apellido'],
-                            deuda_inicial = form['deuda_inicial'],
-                            deuda_inicial_en_dolares = dolar_blue,
-                            intereses_mensuales = form['intereses_mensuales'],
-                            created_at = date.today()
-                            )
-            return redirect(request, '/gracias.html/')
+            post = form.save(commit=False)
+            post.acreedor = request.User
+            post.deuda_inicial_en_dolares = form.deuda_inicial * dolar_blue
+            post.created_at = date.today()
+            post.save()
+            return redirect(request, 'creditos.html')
     else:
         form = DeudoresForm()
 
     return render(request, 'formulario.html', {'form': form})
-
-       #FALTA EL USUARIO
-
