@@ -6,6 +6,6 @@ from .views import crear_deudor
 app_name = 'debtsmanager'
 urlpatterns = [
     path('', mostrar_deudores),
-    path('formulario/', crear_deudor, name = 'formulario'),
-    path('gracias/', crear_deudor, name= 'gracias'),
+    path('formulario/', crear_deudor),
+
 ]

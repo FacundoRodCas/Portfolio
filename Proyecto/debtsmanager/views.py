@@ -1,13 +1,11 @@
 from django.shortcuts import render, redirect
-try:
-    from .models import Deudores
-except Exception as e:
-    print(f'El error es {e}')
+from .models import Deudores
 import json
 import urllib.request
 from datetime import date
 from .forms import DeudoresForm
 from datetime import date
+from django.contrib.auth.models import User
 
 response = urllib.request.urlopen('https://api.bluelytics.com.ar/v2/latest')
 response_body = response.read()
@@ -32,16 +30,13 @@ def crear_deudor(request):
         form=DeudoresForm(request.POST)
         if form.is_valid():
             deudor = Deudores.objects.create(nombre = form['nombre'],
-                                    apellido = form['apellido'],
-                                    deuda_inicial = form['deuda_inicial'],
-                                    deuda_inicial_en_dolares = dolar_blue,
-                                    intereses_mensuales = form['intereses_mensuales'],
-                                    acreedor = form.user,
-                                    created_at = date.today()
-                                    )
-            render(request, 'gracias.html')
-        return {'deudor':deudor}
-
+                            apellido = form['apellido'],
+                            deuda_inicial = form['deuda_inicial'],
+                            deuda_inicial_en_dolares = dolar_blue,
+                            intereses_mensuales = form['intereses_mensuales'],
+                            created_at = date.today()
+                            )
+            return redirect(request, '/gracias.html/')
     else:
         form = DeudoresForm()
 
