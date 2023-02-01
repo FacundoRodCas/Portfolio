@@ -27,14 +27,21 @@ def mostrar_deudores(request):
         return render(request, 'creditos.html', {'deudores': deudores, 'list': list, 'dolar': dolar_blue})
 
 def crear_deudor(request):
+    usuario_actual = get_object_or_404(User, username = request.user.username)
     if request.method == 'POST':
         form = DeudoresForm(request.POST)
         if form.is_valid():
-            post = form.save(commit=False)
-            post.acreedor = request.User
-            post.deuda_inicial_en_dolares = form.deuda_inicial * dolar_blue
-            post.created_at = date.today()
-            post.save()
+            form = form.save(commit=False)
+            dolar = form.deuda_inicial / dolar_blue
+            form = Deudores(nombre = form.nombre,
+                            apellido = form.apellido,
+                            deuda_inicial = form.deuda_inicial,
+                            deuda_inicial_en_dolares = dolar,
+                            intereses_mensuales = form.intereses_mensuales,
+                            acreedor = usuario_actual,
+                            created_at = date.today()
+                            )
+            form.save()
             return redirect(request, 'creditos.html')
     else:
         form = DeudoresForm()
