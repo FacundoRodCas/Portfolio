@@ -20,7 +20,7 @@ from Proyecto.views import home
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('home/', home),
-    path('creditos/', include('debtsmanager.urls')),
+    path('home/', home, name='home'),
+    path('perfil/', include('debtsmanager.urls')),
     path('registro/', include('Registro.urls')),
 ]

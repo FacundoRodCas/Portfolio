@@ -1,4 +1,5 @@
 from django.shortcuts import get_object_or_404, render, redirect
+from django.urls import reverse
 from .models import Deudores
 from .forms import DeudoresForm
 from datetime import date
@@ -23,6 +24,7 @@ def mostrar_deudores(request):
             meses_pasados = ((today.year - deudor.created_at.year) * 12) + (today.month - deudor.created_at.month)
             intereses_totales = ((deudor.deuda_inicial_en_dolares / 100) * deudor.intereses_mensuales)
             valor = (deudor.deuda_inicial_en_dolares + (meses_pasados * intereses_totales)) * dolar_blue
+            valor = round(valor, 2)
             list.append(valor)
         return render(request, 'creditos.html', {'deudores': deudores, 'list': list, 'dolar': dolar_blue})
 
@@ -37,8 +39,23 @@ def crear_deudor(request):
             deudor.deuda_inicial_en_dolares = float(deuda_inicial) / dolar_blue
             deudor.created_at = date.today()
             form.save()
-            return render(request, 'gracias.html', {'form': str(form)})
+            return redirect('debtsmanager:creditos')
     else:
         form = DeudoresForm()
     return render(request, 'formulario.html', {'form': form})
 
+def modificar_deuda(request, pk):
+    deuda = Deudores.objects.get(pk = pk)
+    if request.method == 'POST':
+        form = DeudoresForm(request.POST, instance=deuda)
+        if form.is_valid():
+            form.save()
+            return redirect('debtsmanager:creditos')
+    else:
+        form = DeudoresForm(instance=deuda)
+    return render(request, 'editar.html', {'form':form})
+
+def eliminar_deuda(request, pk):
+    deuda = Deudores.objects.get(pk = pk)
+    deuda.delete()
+    return redirect('debtsmanager:creditos')

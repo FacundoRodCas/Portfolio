@@ -1,9 +1,11 @@
 <html>
     {% if user.is_authenticated %}
-    Hola, {{user.username}}
+    Hola, {{user.username}} &nbsp; &nbsp; <a href="{% url 'registro:cerrar_sesion' %}">Cerrar sesión</a>
+    <hr>
+    <a href= "{% url 'debtsmanager:creditos' %}" class="btn btn-success">Ir a mi perfil</a> &nbsp; &nbsp; <a href="home.html"></a>
     {% else %}
-    No autenticado
-    <a href="login.html">Login</a>&nbsp;<a href="registo.html">Registrate</a>
+    No autenticado. &nbsp; &nbsp; &nbsp;
+    <a href="{% url 'registro:iniciar_sesion' %}"> Iniciar sesión </a>&nbsp;<a href="{% url 'registro:registrarse' %}">Registrate</a>
     {% endif %}
     <body>Bienvenido: el dolar blue es: {{dolar}}</body>
 </html>
