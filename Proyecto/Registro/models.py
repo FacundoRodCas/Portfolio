@@ -1,3 +1,3 @@
 from django.db import models
 
-# Create your models here.
+# Como nos valemos de formularios genéricos, no necesitamos establecer ningún model.

@@ -15,9 +15,10 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from Proyecto.views import home
+#Importamos home de views.
+from .views import home
 
-
+#Incorporamos el path de la view importada e incluimos las urls de las apps.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('home/', home, name='home'),

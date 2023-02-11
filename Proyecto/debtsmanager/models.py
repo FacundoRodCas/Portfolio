@@ -1,7 +1,8 @@
 from django.db import models
+#Importamos User
 from django.contrib.auth.models import User
 
-
+#Definimos la clase Deudores y sus atributos.
 class Deudores(models.Model):
     nombre = models.CharField(max_length=20)
     apellido = models.CharField(max_length=30)
