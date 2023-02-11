@@ -1,13 +1,20 @@
-Este el primer proyecto de mi portfolio. En él, pretendo mostrar mis conocmientos en el uso de:
-Python,
-Django,
-PostgreSQL,
-JSON,
-ORM y buenas prácticas.
+Este es el primer proyecto de mi portfolio. En él, creo una página web a través de Django que servirá para crear una cuenta y subir créditos en pesos argentinos.
+En el perfil del usuario se despliegan los créditos actualizados con el precio promedio del dolar blue que figura en el documento JSON, en https://api.bluelytics.com.ar/v2/latest.
 
-El proyecto contará con una tabla con base de datos que permita al usuario llevar cuenta de sus creditos actualizados en dolar blue y en relación a los intereses
-consignados por él mismo. Esta tabla se relacionará con la tabla de usuarios.
-Por lo tanto, será necesario distitntos campos: Deudor, deuda inicial, deuda actualizada, fecha de creación de la deuda.
-Por otro lado, se le brindará formularios al usuario para crear, actualizar y eliminar sus deudas.
-Si bien no es un proyecto complejo, integra una serie variada de herramientas y da un pantallazo general de cómo se desarrolla una webapp con Django. En cuanto al frontend,
-utilizaremos plantillas responsive prearmadas.
+Para correr la webapp, hará falta:
+1) Instalar y descargar Python
+2) Descargar este proyecto
+3) Buscar la carpeta "Proyecto", donde se encuentra el archivo "manage.py" y copiar el directorio
+4) En la terminal, escribir el comando "cd" y pegar el directorio copiado
+5) En la siguiente línea, colocar "pip install Django" (instalamos django)
+6) Descargamos PostgreSQL y los instalamos
+7) Luego, en la terminal, en el directorio donde se encuentra manage.py, colocamos "pip install psycopg2" (instalamos la librería que nos permitirá usar PostgreSQL) 
+8) Abrir pgAdmin, hacer click derecho en postgres y seleccionar Query tools
+9) Crear una base de datos llamada "Deudores" con el comando "create database Deudroes" y guardarla.
+10) En la terminal, en el directorio de la carpeta de nuestro proyecto, colocar "pip install psycopg2"
+11) En ese mismo directorio, colocar "python manage.py makemigrations"
+12) En la siguiente línea, colocar "python manage.py migrate"
+13) En la siguiente línea, colocar "python manage.py runserver"
+14) Acceder en el navegador, en la barra de direcciones, colocar: 127.0.0.1:8000/home/ y listo.
+
+El proyecto es escalable y proximamente subiré precios históricos del dolar (ya que actualmente solo funciona con el precio actual), además requiere una página 404.
