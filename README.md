@@ -19,3 +19,4 @@ Para correr la webapp, hará falta:
 15) Acceder en el navegador, en la barra de direcciones, colocar: 127.0.0.1:8000/home/ y listo.
 
 El proyecto es escalable y proximamente subiré precios históricos del dolar (ya que actualmente solo funciona con el precio actual), además requiere una página 404.
+Por último, solo se ha trabajdo en master, ya que no he programado en equipo y el proyecto es relativamente chico.
