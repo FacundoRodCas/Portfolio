@@ -6,7 +6,7 @@ Para correr la webapp, hará falta:
 2) Descargar este repositorio
 3) Desde la terminal, entrar a la carpeta del proyecto
 4) En la siguiente línea, colocar "pip install Django" (instalamos django)
-5) Descargamos PostgreSQL y lo instalamos
+5) Descargar PostgreSQL y lo instalamos
 6) Luego, en la terminal, en el directorio de nuestro proyecto, colocamos "pip install psycopg2" (instalamos la librería que nos permitirá usar PostgreSQL) 
 7) Abrir pgAdmin, hacer click derecho en postgres y seleccionar Query tools
 8) Si en pgAdmin se colocó una contraseña distinta a "admin", colocar esa contraseña en la variable password en settings.py. en DATABASES (de lo contrario no tocar)
