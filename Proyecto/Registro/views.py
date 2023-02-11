@@ -47,10 +47,10 @@ def iniciar_sesion(request):
             password = form.cleaned_data.get('password')
             #Autenticamos al usuario a partir de las variables username y password.
             user = authenticate(request, username=username, password=password)
-            #Si el valor del usuario no es None, se hace login y se redirige al home.
+            #Si el valor del usuario no es None, se hace login y se redirige al perfil del usuario.
             if user is not None:
                 login(request, user)
-                return redirect('home')
+                return redirect('debtsmanager:creditos')
             #Sino, se envía un mensaje del error.
             else:
                 messages.success(request, ('Hubo un error, inténtalo de nuevo.'))

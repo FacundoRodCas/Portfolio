@@ -1,18 +1,14 @@
 <html>
-<head>
-{% if messages %}
-    
-{% for message in messages %}
-        {{ message }}
-{% endfor %}
-{% endif %}
-</head>
+
 
     <h1>Inicie sesión</h1>
     <body>
+        
+        
         <form action="" method="POST">{% csrf_token %}
-        {{form}}
+            {{form}}
         <button type="submit">Ingresar</button>
+        
         </form>
         
     </body>
