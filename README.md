@@ -1,4 +1,4 @@
-Este es el primer proyecto de mi portfolio. En él, creo una página web a través de Django que servirá para crear una cuenta y subir créditos en pesos argentinos y guarda el valor inicial en dolar blue. Es una aplicación útil para llevar un registro actualizado en pesos.
+Este es el primer proyecto de mi portfolio. En él, creo una página web a través de Django que servirá para crear una cuenta y subir créditos en pesos argentinos. Es una aplicación útil para llevar un registro actualizado de nuestros créditos en pesos.
 En el perfil del usuario, se despliegan los créditos actualizados con los intereses mensuales y el precio promedio del dolar blue tal como figura en el documento JSON, en https://api.bluelytics.com.ar/v2/latest.
 
 Para correr la webapp, hará falta:
