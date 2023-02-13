@@ -29,7 +29,8 @@ class Registro(View):
             #Si no es válida, informamos del error.
             for msg in form.error_messages:
                 messages.error(request, form.error_messages[msg])
-        return render(request, 'home.html', {'form': form})
+
+            return render(request, 'registro.html', {'form': form})
 
 #Definimos la función de cerrar sesión que redirige al home.
 def cerrar_sesion(request):
@@ -51,10 +52,10 @@ def iniciar_sesion(request):
             if user is not None:
                 login(request, user)
                 return redirect('debtsmanager:creditos')
-            #Sino, se envía un mensaje del error.
-            else:
-                messages.success(request, ('Hubo un error, inténtalo de nuevo.'))
-                return redirect('login.html')
+            #Si no, se envía un mensaje del error.
+        else:
+            messages.error(request, 'Hubo un error, inténtalo de nuevo.')
+            return redirect('registro:iniciar_sesion')
     #Desplegamos el formulario genérico de autenticación.
     form = AuthenticationForm()
     return render(request, 'login.html', {'form':form})

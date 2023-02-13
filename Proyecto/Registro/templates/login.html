@@ -1,18 +1,24 @@
 <html>
 
-
-    <h1>Inicie sesión</h1>
-    <body>
+<h1>Iniciar sesión</h1>
         
         
         <form action="" method="POST">{% csrf_token %}
             {{form}}
-        <button type="submit">Ingresar</button>
-        
-        </form>
-        
-    </body>
 
+            
+        <button type="submit">Ingresar</button>
+            
+        </form>
+<body>
+    {% if messages %}
+    {% for message in messages %}
+            {{ message }}
+    {% endfor %}
+{% endif %}
+</body>
+        
+    
    
 
 </html>
