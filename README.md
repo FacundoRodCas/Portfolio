@@ -17,5 +17,7 @@ Para correr la webapp, hará falta:
 13) En la siguiente línea, colocar "python manage.py runserver"
 14) Acceder en el navegador, en la barra de direcciones, colocar: 127.0.0.1:8000/home/ y listo.
 
+#Si se quiere acceder al panel de administrador, hace falta crear un super usuario. En la terminal, en el directorio del proyecto, tipear "python manage.py createsuperuser".
+
 El proyecto seguirá siendo revisitado, y próximamente subiré precios históricos del dolar (ya que actualmente solo funciona con el precio actual), además requiere una página 404.
 Por último, hasta el momento, solo se ha trabajdo en master, ya que no he programado en equipo y el proyecto es relativamente pequeño.
